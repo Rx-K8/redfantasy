@@ -7,10 +7,10 @@ public class Main {
 
     while (true) {
       try {
-        if (rf.getPlayerHp() > 0 && rf.getCpuHp() > 0) {
+        if (rf.getUserHp() > 0 && rf.getCpuHp() > 0) {
           Thread.sleep(3000);
           rf.startPhase();
-        } else if (rf.getPlayerHp() <= 0) {
+        } else if (rf.getUserHp() <= 0) {
           System.out.println("Playerは死んでしまった");
           break;
         } else if (rf.getCpuHp() <= 0) {
@@ -22,12 +22,12 @@ public class Main {
       }
     }
     System.out.println("Player History:");
-    for (int i = 0; i < rf.getPlayerHistory().length && rf.getPlayerHistory()[i] != -9999; i++) {
-      System.out.print(rf.getPlayerHistory()[i] + "\t");
+    for (Integer history : rf.getUserHistory()) {
+      System.out.print(history + "\t");
     }
     System.out.println("\nCPU History:");
-    for (int i = 0; i < rf.getCpuHistory().length && rf.getCpuHistory()[i] != -9999; i++) {
-      System.out.print(rf.getCpuHistory()[i] + "\t");
+    for (Integer history : rf.getCpuHistory()) {
+      System.out.print(history + "\t");
     }
   }
 }

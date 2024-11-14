@@ -4,8 +4,9 @@ import java.util.Map;
 public class MonsterManager {
   private final Map<String, Monster> nameToMonster = new HashMap<>();
   private final Map<Integer, String> idToName = new HashMap<>();
+  private static MonsterManager instance;
 
-  public MonsterManager() {
+  private MonsterManager() {
     for (MonsterType monster : MonsterType.values()) {
       addMonster(new Monster(monster.getId(), monster.getName(), monster.getPoint()));
     }
@@ -27,5 +28,12 @@ public class MonsterManager {
 
   public Integer getTotalMonsters() {
     return nameToMonster.size();
+  }
+
+  public static MonsterManager getInstance() {
+    if (instance == null) {
+      instance = new MonsterManager();
+    }
+    return instance;
   }
 }
